@@ -9,6 +9,7 @@ import { ApiService } from './services/api.service'; // ajuste o caminho se nece
 export class HomeComponent implements OnInit {
   message: string = '';
 
+
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {

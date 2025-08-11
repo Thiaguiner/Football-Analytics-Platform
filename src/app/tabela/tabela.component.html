@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Campeonato Brasileiro</h1>
+  <h3>Buscar Tabela</h3>
+<input
+  type="number"
+  placeholder="Ano"
+  [ngModel]="ano"
+  (ngModelChange)="ano = $event ? +$event : null"
+/>
+  <button (click)="buscarTabela()">Ver Tabela</button>
+  <pre *ngIf="tabela.length">{{ tabela | json }}</pre>
+</div>

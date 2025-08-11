@@ -13,5 +13,10 @@ export class ApiService {
   getHello(): Observable<any> {
     return this.http.get(`${this.API_URL}/hello`);
   }
+
+
+  getTabela(ano: number): Observable<any> {
+    return this.http.get(`${this.API_URL}/tabela`, { params: { ano } });
+  }
 }
 
