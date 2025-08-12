@@ -7,9 +7,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { TabelaComponent } from './tabela/tabela.component';
-
+import { TimesComponent } from './times/times.component';
 @NgModule({
-  declarations: [AppComponent, HomeComponent, TabelaComponent],
+  declarations: [AppComponent, HomeComponent, TabelaComponent, TimesComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './services/api.service'; // ajuste o caminho se necessário
+import { Event,  } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,18 +9,15 @@ import { ApiService } from './services/api.service'; // ajuste o caminho se nece
 })
 export class HomeComponent implements OnInit {
   message: string = '';
+  mostrarTabela = false;
 
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.apiService.getHello().subscribe({
-      next: (res: any) => {
-        this.message = res.message;
-      },
-      error: (err: any) => {
-        console.error('Erro ao buscar mensagem:', err);
-      },
-    });
+  }
+  mostrarComponentTabela(event: MouseEvent){
+    event.preventDefault();
+    this.mostrarTabela = true;
   }
 }

@@ -16,9 +16,10 @@ export class TabelaComponent implements OnInit {
     
   }
   buscarTabela() {
+    if(!this.ano) return
     this.apiService.getTabela(this.ano).subscribe(data => {
-      this.tabela = data
-      console.log(data)
+      this.tabela = data.content
+      console.log(this.tabela)
     })
   }
 

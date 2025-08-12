@@ -1,12 +1,58 @@
-<div class="container">
-  <h1>Campeonato Brasileiro</h1>
-  <h3>Buscar Tabela</h3>
-<input
-  type="number"
-  placeholder="Ano"
-  [ngModel]="ano"
-  (ngModelChange)="ano = $event ? +$event : null"
-/>
-  <button (click)="buscarTabela()">Ver Tabela</button>
-  <pre *ngIf="tabela.length">{{ tabela | json }}</pre>
+<div class="min-h-screen bg-blue-50 flex justify-center items-start p-10">
+  <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-7xl">
+    <div class="mb-6">
+      <h2 class="text-4xl font-bold text-center">Classificação</h2>
+      <p class="text-gray-600">Campeonato Brasileiro {{ano}}</p>
+    </div>
+
+    <!-- Seleção do ano -->
+    <div class="space-y-2 mb-6">
+      <label class="text-sm font-medium block">Selecione o ano</label>
+      <input
+        [(ngModel)]="ano"
+        (keyup.enter)="buscarTabela()"
+        class="w-48 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+        placeholder="Digite o ano"
+      >
+    </div>
+
+    <!-- Tabela -->
+    <div class="rounded-md border">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th scope="col" class="w-12 px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Pos</th>
+            <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Time</th>
+            <th scope="col" class="px-3 py-2 text-center text-xs font-medium text-gray-500 uppercase">P</th>
+            <th scope="col" class="px-3 py-2 text-center text-xs font-medium text-gray-500 uppercase">J</th>
+            <th scope="col" class="px-3 py-2 text-center text-xs font-medium text-gray-500 uppercase">V</th>
+            <th scope="col" class="px-3 py-2 text-center text-xs font-medium text-gray-500 uppercase">E</th>
+            <th scope="col" class="px-3 py-2 text-center text-xs font-medium text-gray-500 uppercase">D</th>
+            <th scope="col" class="px-3 py-2 text-center text-xs font-medium text-gray-500 uppercase">GP</th>
+            <th scope="col" class="px-3 py-2 text-center text-xs font-medium text-gray-500 uppercase">GC</th>
+            <th scope="col" class="px-3 py-2 text-center text-xs font-medium text-gray-500 uppercase">SG</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <!-- Exemplo de linha da tabela -->
+          <tr *ngFor="let time of tabela; let i = index" class="hover:bg-gray-50">
+            <td class="px-3 py-2">
+              <!-- <span *ngIf="i => 1 & i<5 bg-green-200" class="inline-block px-2 py-1 text-xs font-semibold rounded bg-gray-200 text-gray-700">{{ i + 1}}</span> -->
+              <!-- <span *ngIf="i >= 1 && i < 5" [ngClass]="{ 'bg-green-200': i >= 1 && i < 5, 'bg-gray-200': !(i >= 1 && i < 5) }" class="inline-block px-2 py-1 text-xs font-semibold rounded text-gray-700"> {{ i + 1 }} </span> -->
+              <span [ngClass]=" i >= 0 && i < 4 ? 'bg-green-200' : (i >= 16 && i <= 20 ? 'bg-red-300' : 'bg-gray-200') " class="inline-block px-2 py-1 text-xs font-semibold rounded text-gray-700" > {{ i + 1 }} </span>
+            </td>
+            <td class="px-3 py-2 font-medium">{{time.team}}</td>
+            <td class="px-3 py-2 text-center font-bold">{{time.points}}</td>
+            <td class="px-3 py-2 text-center">{{time.played}}</td>
+            <td class="px-3 py-2 text-center text-green-600 font-medium">{{time.won}}</td>
+            <td class="px-3 py-2 text-center text-yellow-600 font-medium">{{time.draw}}</td>
+            <td class="px-3 py-2 text-center text-red-600 font-medium">{{time.loss}}</td>
+            <td class="px-3 py-2 text-center">{{time.total_goals}}</td>
+            <td class="px-3 py-2 text-center">{{time.gols_tomados_totais}}</td>
+            <td class="px-3 py-2 text-center"[class.text-green-600]="time.goal_difference >= 0" [class.text-red-600]="time.goal_difference < 0">{{ time.goal_difference }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

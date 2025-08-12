@@ -1,1 +1,128 @@
-<app-tabela></app-tabela>
+<ng-container >
+    <div class="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
+        <div class="relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 py-16 sm:py-24">
+            <div class="text-center">
+            <h1 class="text-5xl sm:text-6xl font-bold text-gray-900 mb-4">
+                Football Analytics
+                <span class="block text-green-600">Plataform</span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-2">
+                Análise de dados históricos do Campeonato Brasileiro (2003-2023). Classificação, confrontos e estatísticas essenciais.
+            </p>
+            </div>
+        </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 pb-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Visão Geral</h2>
+            <p class="text-lg text-gray-600">Dados essenciais do campeonato</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
+            <!-- Classificação -->
+            <div class="group hover:shadow-lg transition-all duration-300 cursor-pointer border-2 hover:border-green-200 rounded-lg">
+            <div class="text-center pb-4">
+                <div class="flex justify-center mb-4">
+                <div class="flex items-center justify-center w-12 h-12 bg-yellow-100 rounded-full group-hover:bg-yellow-200 transition-colors">
+                    <!-- Placeholder para o ícone Trophy -->
+                    <span class="h-6 w-6 text-yellow-600">🏆</span>
+                </div>
+                </div>
+                <h3 class="text-xl font-bold">Classificação</h3>
+                <p class="text-center text-gray-500">Tabela com posições e pontos</p>
+            </div>
+            <div class="pt-0 px-4 pb-4">
+                <a routerLink="/tabela" class="w-full group-hover:bg-green-600 transition-colors bg-green-500 text-white py-2 px-4 rounded flex items-center justify-center">Ver Classificação</a>
+            </div>
+            </div>
+            <!-- Informações dos Times -->
+            <div class="group hover:shadow-lg transition-all duration-300 cursor-pointer border-2 hover:border-blue-200 rounded-lg">
+            <div class="text-center pb-4">
+                <div class="flex justify-center mb-4">
+                <div class="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors">
+                    <!-- Placeholder para o ícone Users -->
+                    <span class="h-6 w-6 text-blue-600">👥</span>
+                </div>
+                </div>
+                <h3 class="text-xl font-bold">Times</h3>
+                <p class="text-center text-gray-500">Informações básicas dos clubes</p>
+            </div>
+            <div class="pt-0 px-4 pb-4">
+                <a routerLink="/times" class="w-full group-hover:bg-green-600 transition-colors bg-green-500 text-white py-2 px-4 rounded flex items-center justify-center">
+                    Ver Times
+                </a>
+            </div>
+            </div>
+            <!-- Confrontos Diretos -->
+            <div class="group hover:shadow-lg transition-all duration-300 cursor-pointer border-2 hover:border-red-200 rounded-lg">
+            <div class="text-center pb-4">
+                <div class="flex justify-center mb-4">
+                <div class="flex items-center justify-center w-12 h-12 bg-red-100 rounded-full group-hover:bg-red-200 transition-colors">
+                    <!-- Placeholder para o ícone Swords -->
+                    <span class="h-6 w-6 text-red-600">⚔️</span>
+                </div>
+                </div>
+                <h3 class="text-xl font-bold">Confrontos</h3>
+                <p class="text-center text-gray-500">Histórico entre times</p>
+            </div>
+            <div class="pt-0 px-4 pb-4">
+                <a routerLink="/confrontos" class="w-full group-hover:bg-green-600 transition-colors bg-green-500 text-white py-2 px-4 rounded flex items-center justify-center">
+                    Ver Confrontos
+                </a>
+            </div>
+            </div>
+            <!-- Estatísticas -->
+            <div class="group hover:shadow-lg transition-all duration-300 cursor-pointer border-2 hover:border-purple-200 rounded-lg">
+            <div class="text-center pb-4">
+                <div class="flex justify-center mb-4">
+                <div class="flex items-center justify-center w-12 h-12 bg-purple-100 rounded-full group-hover:bg-purple-200 transition-colors">
+                    <!-- Placeholder para o ícone BarChart3 -->
+                    <span class="h-6 w-6 text-purple-600">📊</span>
+                </div>
+                </div>
+                <h3 class="text-xl font-bold">Estatísticas</h3>
+                <p class="text-center text-gray-500">Rankings e números</p>
+            </div>
+            <div class="pt-0 px-4 pb-4">
+                <a routerLink="/stats" class="w-full group-hover:bg-green-600 transition-colors bg-green-500 text-white py-2 px-4 rounded flex items-center justify-center">
+                    Ver Estatísticas
+                </a>
+            </div>
+            </div>
+        </div>
+        <div class="mt-16">
+            <div class="text-center mb-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">Resumo</h3>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="text-center p-6 bg-white rounded-lg shadow-sm">
+                <div class="text-3xl font-bold text-green-600">Flamengo</div>
+                <div class="text-sm text-gray-600">Líder</div>
+            </div>
+            <div class="text-center p-6 bg-white rounded-lg shadow-sm">
+                <div class="text-3xl font-bold text-blue-600">58 gols</div>
+                <div class="text-sm text-gray-600">Mais gols</div>
+            </div>
+            <div class="text-center p-6 bg-white rounded-lg shadow-sm">
+                <div class="text-3xl font-bold text-purple-600">30 gols</div>
+                <div class="text-sm text-gray-600">Menos gols sofridos</div>
+            </div>
+            <div class="text-center p-6 bg-white rounded-lg shadow-sm">
+                <div class="text-3xl font-bold text-orange-600">90 pontos</div>
+                <div class="text-sm text-gray-600">Melhor campanha</div>
+            </div>
+            </div>
+        </div>
+        <div class="mt-16 text-center">
+            <div class="bg-white rounded-2xl p-8 shadow-sm border">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Começar</h3>
+            <p class="text-gray-600 mb-6">Explore os dados do Campeonato Brasileiro de forma simples.</p>
+            <button class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded">
+                Ver Classificação
+            </button>
+            </div>
+        </div>
+        </div>
+    </div>
+</ng-container>
+<app-tabela *ngIf="mostrarTabela"></app-tabela>
