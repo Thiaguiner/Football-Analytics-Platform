@@ -8,12 +8,15 @@ import { ApiService } from '../home/services/api.service';
 })
 export class TabelaComponent implements OnInit {
   tabela: any[] = []
-  ano: any
-
+  ano: number = 2023
+  anos: number[] = []
   constructor(private apiService: ApiService){}
   
   ngOnInit(): void {
-    
+    for (let ano = 2023; ano >=2003; ano--){
+      this.anos.push(ano)
+    }
+    this.buscarTabela()
   }
   buscarTabela() {
     if(!this.ano) return

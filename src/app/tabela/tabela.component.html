@@ -1,19 +1,21 @@
 <div class="min-h-screen bg-blue-50 flex justify-center items-start p-10">
   <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-7xl">
     <div class="mb-6">
-      <h2 class="text-4xl font-bold text-center">Classificação</h2>
-      <p class="text-gray-600">Campeonato Brasileiro {{ano}}</p>
+      <h2 class="text-6xl font-semibold text-center">Classificação Brasilerão {{ ano }}</h2>
     </div>
 
     <!-- Seleção do ano -->
     <div class="space-y-2 mb-6">
       <label class="text-sm font-medium block">Selecione o ano</label>
-      <input
+      <select
         [(ngModel)]="ano"
-        (keyup.enter)="buscarTabela()"
+        (change)="buscarTabela()"
         class="w-48 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-        placeholder="Digite o ano"
       >
+        <option *ngFor="let anoOption of anos" [value]="anoOption">
+          {{ anoOption }}
+        </option>
+      </select>
     </div>
 
     <!-- Tabela -->
@@ -37,8 +39,6 @@
           <!-- Exemplo de linha da tabela -->
           <tr *ngFor="let time of tabela; let i = index" class="hover:bg-gray-50">
             <td class="px-3 py-2">
-              <!-- <span *ngIf="i => 1 & i<5 bg-green-200" class="inline-block px-2 py-1 text-xs font-semibold rounded bg-gray-200 text-gray-700">{{ i + 1}}</span> -->
-              <!-- <span *ngIf="i >= 1 && i < 5" [ngClass]="{ 'bg-green-200': i >= 1 && i < 5, 'bg-gray-200': !(i >= 1 && i < 5) }" class="inline-block px-2 py-1 text-xs font-semibold rounded text-gray-700"> {{ i + 1 }} </span> -->
               <span [ngClass]=" i >= 0 && i < 4 ? 'bg-green-200' : (i >= 16 && i <= 20 ? 'bg-red-300' : 'bg-gray-200') " class="inline-block px-2 py-1 text-xs font-semibold rounded text-gray-700" > {{ i + 1 }} </span>
             </td>
             <td class="px-3 py-2 font-medium">{{time.team}}</td>
