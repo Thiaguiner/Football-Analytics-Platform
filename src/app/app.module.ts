@@ -9,9 +9,12 @@ import { FormsModule } from '@angular/forms';
 import { TabelaComponent } from './tabela/tabela.component';
 import { TimesComponent } from './times/times.component';
 import { ConfrontosComponent } from './confrontos/confrontos.component';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { RouterModule } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
 @NgModule({
-  declarations: [AppComponent, HomeComponent, TabelaComponent, TimesComponent, ConfrontosComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  declarations: [AppComponent, HomeComponent, TabelaComponent, TimesComponent, ConfrontosComponent, NavbarComponent,  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, AutoCompleteModule,RouterModule],
   providers: [],
   bootstrap: [AppComponent],
 })

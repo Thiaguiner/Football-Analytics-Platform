@@ -29,11 +29,6 @@ export class ConfrontosComponent implements OnInit {
       this.lenVitoriasTime1 = this.times.filter((item: any) => item.resultado_time1 === 'Vitória').length;
       this.lenVitoriasTime2 = this.times.filter((item: any) => item.resultado_time2 === 'Vitória').length;
       this.lenEmpates = this.times.filter((item: any) => item.resultado_time1 === 'Empate').length;
-
-      console.log(this.times);
-      console.log(this.lenVitoriasTime1)
-      console.log(this.lenVitoriasTime2)
-      console.log(this.lenEmpates)
     });
   }
 

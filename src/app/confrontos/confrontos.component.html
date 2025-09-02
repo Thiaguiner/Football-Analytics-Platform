@@ -1,81 +1,94 @@
-<div class="space-y-6">
-  <div class="bg-white shadow rounded-lg">
-    <div class="border-b px-6 py-4">
-      <h2 class="flex items-center gap-2 text-lg font-semibold">
-        Confrontos Diretos
-      </h2>
-      <p class="text-sm text-gray-500">Histórico entre dois times</p>
-    </div>
-    <div class="p-6 space-y-4">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-        <div class="space-y-2">
-          <label class="text-sm font-medium">Primeiro Time</label>
-          <input type="text" [(ngModel)]="time1" (keyup.enter)="confrontos()" placeholder="Nome do time"
-            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm placeholder-gray-400 transition-colors" />
+<app-navbar></app-navbar>
+<div class="min-h-screen bg-blue-50 flex justify-center items-start p-10">
+    <div class="w-[1200px]">
+        <div class="space-y-6">
+        <div class="bg-white shadow rounded-lg">
+            <div class="border-b px-6 py-4">
+            <h1 class="flex items-center gap-2 font-semibold text-2xl">
+                Confrontos Diretos
+            </h1>
+            <p class="text-sm text-gray-500">Histórico entre dois times</p>
+            </div>
+            <div class="p-6 space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                <div class="space-y-2">
+                <label class="text-sm font-medium">Primeiro Time</label>
+                <input type="text" [(ngModel)]="time1" (keyup.enter)="confrontos()" placeholder="Nome do time"
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm placeholder-gray-400 transition-colors" />
+                </div>
+                <div class="flex justify-center">
+                <span>⚔️</span>
+                </div>
+                <div class="space-y-2">
+                <label class="text-sm font-medium">Segundo Time</label>
+                <input type="text" [(ngModel)]="time2" (keyup.enter)="confrontos()" placeholder="Nome do time"
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm placeholder-gray-400 transition-colors" />
+                </div>
+            </div>
+            <button (click)="confrontos()" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md">
+                Ver Confrontos
+            </button>
+            </div>
         </div>
-        <div class="flex justify-center">
-          <span>⚔️</span>
-        </div>
-        <div class="space-y-2">
-          <label class="text-sm font-medium">Segundo Time</label>
-          <input type="text" [(ngModel)]="time2" (keyup.enter)="confrontos()" placeholder="Nome do time"
-            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent shadow-sm placeholder-gray-400 transition-colors" />
-        </div>
-      </div>
-      <button (click)="confrontos()" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md">
-        Ver Confrontos
-      </button>
-    </div>
-  </div>
 
-  <!-- Resumo -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <div class="bg-white rounded-lg shadow p-6 text-center">
-      <div class="text-3xl font-bold text-green-600">{{ lenVitoriasTime1 }}</div>
-      <p class="text-sm text-gray-600">Vitórias {{ time1 }}</p>
-    </div>
-    <div class="bg-white rounded-lg shadow p-6 text-center">
-      <div class="text-3xl font-bold text-yellow-600">{{ lenEmpates }}</div>
-      <p class="text-sm text-gray-600">Empates</p>
-    </div>
-    <div class="bg-white rounded-lg shadow p-6 text-center">
-      <div class="text-3xl font-bold text-blue-600">{{ lenVitoriasTime2 }}</div>
-      <p class="text-sm text-gray-600">Vitórias {{ time2 }}</p>
-    </div>
-  </div>
+        <!-- Resumo -->
+        <div *ngIf="confrontos" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white rounded-lg shadow p-6 text-center">
+            <div class="text-3xl font-bold text-green-600">{{ lenVitoriasTime1 }}</div>
+            <p class="text-sm text-gray-600">Vitórias {{ time1 }}</p>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6 text-center">
+            <div class="text-3xl font-bold text-yellow-600">{{ lenEmpates }}</div>
+            <p class="text-sm text-gray-600">Empates</p>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6 text-center">
+            <div class="text-3xl font-bold text-green-600">{{ lenVitoriasTime2 }}</div>
+            <p class="text-sm text-gray-600">Vitórias {{ time2 }}</p>
+            </div>
+        </div>
 
-  <!-- Histórico -->
-  <div class="bg-white rounded-lg shadow">
-    <div class="border-b px-6 py-4">
-      <h2 class="text-lg font-semibold">Últimos Jogos</h2>
+        <!-- Histórico -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="border-b px-6 py-4">
+                <h2 class="text-lg font-semibold">Últimos Jogos</h2>
+            </div>
+            <div class="p-6">
+                <div class="rounded-md border">
+                <table class="w-full text-sm text-left border-collapse">
+                    <thead class="bg-gray-100">
+                    <tr>
+                        <th class="px-4 py-2 border-b">Data</th>
+                        <th class="px-4 py-2 border-b">Mandante</th>
+                        <th class="px-4 py-2 border-b text-center">Placar</th>
+                        <th class="px-4 py-2 border-b">Visitante</th>
+                        <th class="px-4 py-2 border-b">Rodada</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let jogos of times" class="hover:bg-gray-50">
+                        <td class="px-4 py-2 border-b">
+                        {{ jogos.day }}/{{ jogos.month }}/{{ jogos.year }}
+                        </td>
+                        <td class="px-4 py-2 border-b font-medium">{{ jogos.hometeam }}</td>
+                        <td class="px-4 py-2 border-b text-center font-bold text-lg">
+                        <span
+                            [ngClass]="{'text-green-600': jogos.goalsht > jogos.goalsvt,'text-red-600': jogos.goalsht < jogos.goalsvt,'text-gray-500': jogos.goalsht == jogos.goalsvt}">
+                            {{ jogos.goalsht }}
+                        </span>
+                        -
+                        <span
+                            [ngClass]="{'text-green-600': jogos.goalsvt > jogos.goalsht,'text-red-600': jogos.goalsvt < jogos.goalsht,'text-gray-500': jogos.goalsvt == jogos.goalsht}">
+                            {{ jogos.goalsvt }}
+                        </span>
+                        </td>
+                        <td class="px-4 py-2 border-b font-medium">{{ jogos.visitingteam }}</td>
+                        <td class="px-4 py-2 border-b font-medium">{{ jogos.round }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        </div>
     </div>
-    <div class="p-6">
-      <div class="rounded-md border">
-        <table class="w-full text-sm text-left border-collapse">
-          <thead class="bg-gray-100">
-            <tr>
-              <th class="px-4 py-2 border-b">Data</th>
-              <th class="px-4 py-2 border-b">Mandante</th>
-              <th class="px-4 py-2 border-b text-center">Placar</th>
-              <th class="px-4 py-2 border-b">Visitante</th>
-              <th class="px-4 py-2 border-b">Rodada</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let jogos of times" class="hover:bg-gray-50">
-              <td class="px-4 py-2 border-b">
-                {{ jogos.day }}/{{ jogos.month }}/{{ jogos.year }}
-              </td>
-              <td class="px-4 py-2 border-b font-medium">{{ jogos.hometeam }}</td>
-              <td class="px-4 py-2 border-b text-center font-bold text-lg">
-                {{ jogos.goalsht }} - {{ jogos.goalsvt }}
-              </td>
-              <td class="px-4 py-2 border-b font-medium">{{ jogos.visitingteam }}</td>
-              <td class="px-4 py-2 border-b font-medium">{{ jogos.round }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
 </div>

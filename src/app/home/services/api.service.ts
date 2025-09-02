@@ -31,7 +31,6 @@ export class ApiService {
     let params = new HttpParams()
     params = params.append("time1", time1.toString())
     params = params.append("time2", time2.toString())
-    console.log(params.toString())
 
     return this.http.get(`${this.API_URL}/api/confrontos`, { params })
   }
